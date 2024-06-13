@@ -46,10 +46,6 @@ The script will output several Excel files:
 
 These files contain the collected data, calculated changes, grouped volume, and trend comparison results.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
 For any inquiries or questions, please contact [macroglide@gmail.com](mailto:macroglide@gmail.com).
