@@ -1,4 +1,4 @@
-Stage Ⅰ: Data Collection
+#Stage Ⅰ: Data Collection
 import requests
 import pandas as pd
 import numpy as np
@@ -69,7 +69,7 @@ if data:
 else:
     print("No data to process.")
 
-Stage Ⅱ: Calculation of Price Changes
+#Stage Ⅱ: Calculation of Price Changes
 # Calculate changes
 df = df_1.copy()
 df['Datetime'] = pd.to_datetime(df['Date'].astype(str) + ' ' + df['Time'].astype(str))
@@ -108,7 +108,7 @@ with pd.ExcelWriter('SPY_changes.xlsx', date_format='YYYY-MM-DD') as writer:
     df_2[columns_to_save].to_excel(writer, sheet_name='Changes', index=False)
 print("Changes data saved to SPY_changes.xlsx")
 
-Stage Ⅲ: Classification and Aggregation of Volumes by Timeframes
+#Stage Ⅲ: Classification and Aggregation of Volumes by Timeframes
 # Volume grouping
 df_changes = df[['Date', 'Time', 'Minute Change']]
 df_volume = df_1[['Date', 'Time', 'Volume']]
@@ -154,7 +154,7 @@ with pd.ExcelWriter('SPY_volume_by_group.xlsx', date_format='YYYY-MM-DD') as wri
     grouped_four_hour_volume.to_excel(writer, sheet_name='Four Hour Volume by Group')
 print("Volume data saved to SPY_volume_by_group.xlsx")
 
-Stage Ⅳ: Calculation of Confirmation and Non-Confirmation of Price Movements by Volumes
+#Stage Ⅳ: Calculation of Confirmation and Non-Confirmation of Price Movements by Volumes
 # Definition of Volume Trend
 grouped_daily_comparison = grouped_daily_volume.copy()
 grouped_daily_comparison['Volume Trend'] = grouped_daily_comparison.apply(
@@ -234,7 +234,7 @@ with pd.ExcelWriter('SPY_volume_price_comparison.xlsx', date_format='YYYY-MM-DD'
     grouped_hourly_comparison.to_excel(writer, sheet_name='Hourly', index=False)
 print("Comparison data saved to SPY_volume_price_comparison.xlsx")
 
-PRINT NEEDED DATA
+#PRINT NEEDED DATA
 print(f"Daily Mismatch Percent: {grouped_daily_comparison['Mismatch Percent'].iloc[0]}%")
 print(f"4-Hourly Mismatch Percent: {grouped_four_hour_comparison['Mismatch Percent'].iloc[0]}%")
 print(f"Hourly Mismatch Percent: {grouped_hourly_comparison['Mismatch Percent'].iloc[0]}%")
